@@ -26,7 +26,7 @@ public:
     int getHours() const { return hours; };
     int getCapacity() const { return capacity; };
     double getPrice() const { return price; };
-    //bool operator<(const Workshop& ) { };
+    bool operator<(const Workshop& workshop) { return (number > workshop.number); };
 
 private:
     int number;
