@@ -25,10 +25,8 @@ public:
     std::string getTitle() const { return title; };
     int getHours() const { return hours; };
     int getCapacity() const { return capacity; };
-    double getPrice(): const { return price; };
+    double getPrice() const { return price; };
     //bool operator<(const Workshop& ) { };
-
-
 
 private:
     int number;
@@ -37,7 +35,5 @@ private:
     int capacity;
     double price;
 };
-
-
 
 #endif //WORKSHOP_H
