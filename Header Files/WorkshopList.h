@@ -27,8 +27,8 @@ public:
     int getHours(int workshopNo) const;
     int getCapacity(int workshopNo) const;
     double getPrice(int workshopNo) const;
-    
-    bool isEmpty();
+
+    bool isEmpty() const;
     void clearList();
 
 private:
