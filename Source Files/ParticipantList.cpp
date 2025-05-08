@@ -26,7 +26,8 @@ void ParticipantList::addWorkshopToParticipant(const Participant& participant, c
 {
     auto iterToParticipant = findByID(participant.getID());
     // iterToParticipant->second.push_back(workshop);
-    cout << (iterToParticipant->second)[0];
+
+    // does not work
 }
 
 int ParticipantList::getID(const Participant& participant) const
@@ -42,26 +43,28 @@ std::string ParticipantList::getFirstName(int participantID) const
 
 std::string ParticipantList::getLastName(int participantID) const
 {
-
+    auto iterToParticipant = findByID(participantID);
+    return iterToParticipant->first.getLastName();
 }
 
 std::vector<Workshop> ParticipantList::getWorkshops(int participantID) const
 {
-
+    auto iterToParticipant = findByID(participantID);
+    return iterToParticipant->second;
 }
 
 bool ParticipantList::isEmpty() const
 {
-
+    return participantList.empty();
 }
 
 void ParticipantList::clearList()
 {
-
+    participantList.clear();
 }
 
 std::map<Participant, std::vector<Workshop>>::const_iterator 
 ParticipantList:: findByID(int participantID) const
 {
-
+    // todo
 } 
