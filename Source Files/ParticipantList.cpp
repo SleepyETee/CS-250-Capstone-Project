@@ -1,0 +1,67 @@
+/*
+    Team name
+    
+    Cherevko, Iuliana (Team Leader)
+    Sviridova, Anatasia 
+    Nguyen, Long
+
+    Spring 2025
+    CS A250 - C++ 2
+
+    Workshop Hub    
+*/
+
+#include "ParticipantList.h"
+
+#include <vector>
+
+using namespace std;
+
+void ParticipantList::addParticipant(const Participant& participant)
+{
+    participantList.insert(make_pair(participant, vector<Workshop>()));
+}
+
+void ParticipantList::addWorkshopToParticipant(const Participant& participant, const Workshop& workshop)
+{
+    auto iterToParticipant = findByID(participant.getID());
+    // iterToParticipant->second.push_back(workshop);
+    cout << (iterToParticipant->second)[0];
+}
+
+int ParticipantList::getID(const Participant& participant) const
+{
+    return participant.getID();
+}
+
+std::string ParticipantList::getFirstName(int participantID) const
+{
+    auto iterToParticipant = findByID(participantID);
+    return iterToParticipant->first.getLastName();
+}
+
+std::string ParticipantList::getLastName(int participantID) const
+{
+
+}
+
+std::vector<Workshop> ParticipantList::getWorkshops(int participantID) const
+{
+
+}
+
+bool ParticipantList::isEmpty() const
+{
+
+}
+
+void ParticipantList::clearList()
+{
+
+}
+
+std::map<Participant, std::vector<Workshop>>::const_iterator 
+ParticipantList:: findByID(int participantID) const
+{
+
+} 
