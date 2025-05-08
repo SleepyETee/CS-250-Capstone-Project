@@ -18,7 +18,12 @@
 class DataLoader
 {
 public:
-    static void loadWorkshops(...);
-};
+    DataLoader(const std::string& fileName);
+    void loadWorkshops(WorkshopList& workshopList);
+    void loadParticipants(ParticipantList& participantList);
+    void loadWorkshopParticipants(ParticipantList& participantList, WorkshopList& workshopList);
+    void loadWorkshopParticipants(ParticipantList& participantList, WorkshopList& workshopList, const std::string& fileName);
+    void loadWorkshopParticipants(ParticipantList& participantList, WorkshopList& workshopList, const std::string& fileName, const std::string& workshopFileName);
+};  
 
 #endif
