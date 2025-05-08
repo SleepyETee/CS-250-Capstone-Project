@@ -2,7 +2,7 @@
     Team name
 
     Cherevko, Iuliana (Team Leader)
-    Sviridova, Anatasia
+    Sviridova, Anastasia
     Nguyen, Long
 
     Spring 2025
@@ -29,7 +29,7 @@ public:
     int getCapacity() const { return capacity; };
     double getPrice() const { return price; };
 
-    bool operator<(const Workshop& workshop) const { return number > workshop.number; };
+    bool operator<(const Workshop& workshop) const { return number < workshop.number; };
 
 private:
     int number;
