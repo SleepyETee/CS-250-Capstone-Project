@@ -1,5 +1,5 @@
 /*
-Team name
+    Team name
 
     Cherevko, Iuliana (Team Leader)
     Sviridova, Anatasia
@@ -25,7 +25,7 @@ public:
     std::string getTitle() const { return title; };
     int getHours() const { return hours; };
     int getCapacity() const { return capacity; };
-    double getPrice(): const { return price; };
+    double getPrice() const { return price; };
     //bool operator<(const Workshop& ) { };
 
 
