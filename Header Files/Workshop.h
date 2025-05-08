@@ -1,5 +1,5 @@
 /*
-Team name
+    Team name
 
     Cherevko, Iuliana (Team Leader)
     Sviridova, Anatasia
