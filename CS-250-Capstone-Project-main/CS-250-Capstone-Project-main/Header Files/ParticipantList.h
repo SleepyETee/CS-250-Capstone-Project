@@ -2,7 +2,7 @@
     Team name
     
     Cherevko, Iuliana (Team Leader)
-    Sviridova, Anatasia 
+    Sviridova, Anastasia
     Nguyen, Long
 
     Spring 2025
@@ -14,19 +14,19 @@
 #ifndef PARTICIPANTLIST_H
 #define PARTICIPANTLIST_H
 
-#include <iostream>
+#include "../Header Files/Workshop.h"
+#include "../Header Files/Participant.h"
+
 #include <string>
 #include <vector>
 #include <map>
-#include "Workshop.h"
 
-class Participant
+class ParticipantList
 {
 public:
 
     void addParticipant(const Participant& participant);
     void addWorkshopToParticipant(const Participant& participant, const Workshop& workshop);
-    
     
     int getID(const Participant& participant) const;
     std::string getFirstName(int participantID) const;
@@ -36,11 +36,10 @@ public:
     bool isEmpty() const;
     void clearList();
 
-    std::map<Participant, std::vector<Workshop>>::const_iterator 
-        findByID(int participantID) const; 
-
 private:
     std::map<Participant, std::vector<Workshop>> participantList;
+    std::map<Participant, std::vector<Workshop>>::const_iterator 
+        findByID(int participantID) const; 
 };
 
 #endif

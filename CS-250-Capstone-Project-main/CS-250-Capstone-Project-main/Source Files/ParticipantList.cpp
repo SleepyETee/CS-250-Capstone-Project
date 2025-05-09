@@ -2,7 +2,7 @@
     Team name
     
     Cherevko, Iuliana (Team Leader)
-    Sviridova, Anatasia 
+    Sviridova, Anastasia
     Nguyen, Long
 
     Spring 2025
@@ -11,23 +11,20 @@
     Workshop Hub    
 */
 
-#include "ParticipantList.h"
+#include "../Header Files/ParticipantList.h"
 
-#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 void ParticipantList::addParticipant(const Participant& participant)
 {
-    participantList.insert(make_pair(participant, vector<Workshop>()));
+    participantList[participant] = {};
 }
 
 void ParticipantList::addWorkshopToParticipant(const Participant& participant, const Workshop& workshop)
 {
-    auto iterToParticipant = findByID(participant.getID());
-    // iterToParticipant->second.push_back(workshop);
-
-    // does not work
+    participantList[participant].push_back(workshop);
 }
 
 int ParticipantList::getID(const Participant& participant) const
@@ -37,20 +34,17 @@ int ParticipantList::getID(const Participant& participant) const
 
 std::string ParticipantList::getFirstName(int participantID) const
 {
-    auto iterToParticipant = findByID(participantID);
-    return iterToParticipant->first.getLastName();
+    return findByID(participantID)->first.getLastName();
 }
 
 std::string ParticipantList::getLastName(int participantID) const
 {
-    auto iterToParticipant = findByID(participantID);
-    return iterToParticipant->first.getLastName();
+    return findByID(participantID)->first.getLastName();
 }
 
 std::vector<Workshop> ParticipantList::getWorkshops(int participantID) const
 {
-    auto iterToParticipant = findByID(participantID);
-    return iterToParticipant->second;
+    return findByID(participantID)->second;
 }
 
 bool ParticipantList::isEmpty() const
@@ -66,74 +60,7 @@ void ParticipantList::clearList()
 std::map<Participant, std::vector<Workshop>>::const_iterator 
 ParticipantList:: findByID(int participantID) const
 {
-    // todo
-} /*
-    Team name
-    
-    Cherevko, Iuliana (Team Leader)
-    Sviridova, Anatasia 
-    Nguyen, Long
-
-    Spring 2025
-    CS A250 - C++ 2
-
-    Workshop Hub    
-*/
-
-#include "ParticipantList.h"
-
-#include <vector>
-
-using namespace std;
-
-void ParticipantList::addParticipant(const Participant& participant)
-{
-    participantList.insert(make_pair(participant, vector<Workshop>()));
-}
-
-void ParticipantList::addWorkshopToParticipant(const Participant& participant, const Workshop& workshop)
-{
-    auto iterToParticipant = findByID(participant.getID());
-    // iterToParticipant->second.push_back(workshop);
-
-    // does not work
-}
-
-int ParticipantList::getID(const Participant& participant) const
-{
-    return participant.getID();
-}
-
-std::string ParticipantList::getFirstName(int participantID) const
-{
-    auto iterToParticipant = findByID(participantID);
-    return iterToParticipant->first.getLastName();
-}
-
-std::string ParticipantList::getLastName(int participantID) const
-{
-    auto iterToParticipant = findByID(participantID);
-    return iterToParticipant->first.getLastName();
-}
-
-std::vector<Workshop> ParticipantList::getWorkshops(int participantID) const
-{
-    auto iterToParticipant = findByID(participantID);
-    return iterToParticipant->second;
-}
-
-bool ParticipantList::isEmpty() const
-{
-    return participantList.empty();
-}
-
-void ParticipantList::clearList()
-{
-    participantList.clear();
-}
-
-std::map<Participant, std::vector<Workshop>>::const_iterator 
-ParticipantList:: findByID(int participantID) const
-{
-    // todo
+    return find_if(participantList.begin(), participantList.end(), 
+        [participantID] (const pair<Participant, vector<Workshop>>& aPair) 
+            { return (aPair.first.getID() == participantID); });
 } 
