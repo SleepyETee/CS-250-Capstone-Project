@@ -13,7 +13,7 @@
 
 #include "ParticipantList.h"
 
-#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -24,10 +24,7 @@ void ParticipantList::addParticipant(const Participant& participant)
 
 void ParticipantList::addWorkshopToParticipant(const Participant& participant, const Workshop& workshop)
 {
-    auto iterToParticipant = findByID(participant.getID());
-    // iterToParticipant->second.push_back(workshop);
-
-    // does not work
+    participantList[participant].push_back(workshop);
 }
 
 int ParticipantList::getID(const Participant& participant) const
