@@ -2,7 +2,7 @@
     Team name
 
     Cherevko, Iuliana (Team Leader)
-    Sviridova, Anatasia
+    Sviridova, Anastasia
     Nguyen, Long
 
     Spring 2025
@@ -11,29 +11,29 @@
     Workshop Hub
 */
 
-#ifndef WORKSHOP_H
-#define WORKSHOP_H
+#ifndef WORKSHOPLIST_H
+#define WORKSHOPLIST_H
 
-#include <iostream>
+#include "Workshop.h"
 
-class Workshop {
+#include <set>
+
+class WorkshopList {
 public:
-    Workshop(int theNumber, std::string theTitle, int theHours,
-                 int theCapacity, double thePrice);
+    void addWorkshop(const Workshop& workshop);
 
-    int getNumber() const { return number; };
-    std::string getTitle() const { return title; };
-    int getHours() const { return hours; };
-    int getCapacity() const { return capacity; };
-    double getPrice() const { return price; };
-    bool operator<(const Workshop& workshop) { return (number > workshop.number); };
+    int getNumber(const Workshop& workshop) const;
+    std::string getTitle(int workshopNo) const;
+    int getHours(int workshopNo) const;
+    int getCapacity(int workshopNo) const;
+    double getPrice(int workshopNo) const;
+
+    bool isEmpty() const;
+    void clearList();
 
 private:
-    int number;
-    std::string title;
-    int hours;
-    int capacity;
-    double price;
+    std::set<Workshop> workshopList;
+    std::set<Workshop>::const_iterator findByNumber(int workshopNo) const;
 };
 
-#endif //WORKSHOP_H
+#endif //WORKSHOPLIST_H
