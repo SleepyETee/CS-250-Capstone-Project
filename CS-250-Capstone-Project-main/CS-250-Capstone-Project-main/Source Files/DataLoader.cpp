@@ -2,7 +2,7 @@
     Team name
     
     Cherevko, Iuliana (Team Leader)
-    Sviridova, Anatasia 
+    Sviridova, Anastasia
     Nguyen, Long
 
     Spring 2025
