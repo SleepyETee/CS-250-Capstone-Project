@@ -1,3 +1,0 @@
-﻿  Main.cpp
-C:\Users\alex\source\repos\CS-A250-Capstone-Project\CS-A250-Capstone-Project\Main.cpp(44,17): warning C4566: character represented by universal-character-name '\u2192' cannot be represented in the current code page (1252)
-  CS-A250-Capstone-Project.vcxproj -> C:\Users\alex\source\repos\CS-A250-Capstone-Project\x64\Debug\CS-A250-Capstone-Project.exe

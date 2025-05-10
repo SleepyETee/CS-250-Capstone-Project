@@ -12,12 +12,13 @@
 */
 
 
-#include <iostream>
-#include "ParticipantList.h"  // can be changed back to just file names, but this way it works.
+#include "ParticipantList.h"
 #include "Participant.h"
 #include "Workshop.h"
 #include "WorkshopList.h"
 #include "DataLoader.h"
+
+#include <iostream>
 #include <string>
 
 using namespace std;
