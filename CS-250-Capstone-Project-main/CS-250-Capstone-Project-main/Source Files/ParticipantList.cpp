@@ -34,7 +34,7 @@ int ParticipantList::getID(const Participant& participant) const
 
 std::string ParticipantList::getFirstName(int participantID) const
 {
-    return findByID(participantID)->first.getLastName();
+    return findByID(participantID)->first.getFirstName();
 }
 
 std::string ParticipantList::getLastName(int participantID) const

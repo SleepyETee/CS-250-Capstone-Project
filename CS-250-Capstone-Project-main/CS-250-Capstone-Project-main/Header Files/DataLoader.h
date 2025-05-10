@@ -13,17 +13,12 @@
 
 #ifndef DATALOADER_H
 #define DATALOADER_H
-#include "WorkshopList.h"
-
+#include <string>
+class WorkshopList;
 class DataLoader
 {
 public:
-    DataLoader(const std::string& fileName);
-    void loadWorkshops(WorkshopList& workshopList);
-    void loadParticipants(ParticipantList& participantList);
-    void loadWorkshopParticipants(ParticipantList& participantList, WorkshopList& workshopList);
-    void loadWorkshopParticipants(ParticipantList& participantList, WorkshopList& workshopList, const std::string& fileName);
-    void loadWorkshopParticipants(ParticipantList& participantList, WorkshopList& workshopList, const std::string& fileName, const std::string& workshopFileName);
-};  
+    static void loadWorkshops(WorkshopList& workshopList, const std::string& filename);
+};
 
 #endif

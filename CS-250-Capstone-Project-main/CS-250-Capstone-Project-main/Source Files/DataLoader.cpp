@@ -10,31 +10,65 @@
 
     Workshop Hub    
 */
-#include "DataLoader.h"
+#include "../Header Files/DataLoader.h"
+#include "../Header Files/WorkshopList.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
+using namespace std;
 
-DataLoader::loadWorkshops(WorkshopList& workshopList, const std::string& filename)
+
+namespace          // internal helper constant
 {
-    std::ifstream file(filename);
-    if (!file.is_open())
+    constexpr char PIPE_DELIM = '|';
+}
+
+void DataLoader::loadWorkshops(WorkshopList& workshopList,
+                               const string& fileName)
+{
+    ifstream inFile(fileName);
+    bool fileOpened = inFile.is_open();       // boolean flag instead of early‑return
+
+    if (!fileOpened)
     {
-        std::cerr << "Error opening file: " << filename << std::endl;
-        return;
+        cerr << "Unable to open " << fileName << '\n';
     }
-    std::string line;   
-    while (std::getline(file, line))
+    else
     {
-        std::istringstream iss(line);
-        std::string name, date, time, duration;
-        if (!(iss >> name >> date >> time >> duration)) { break; } // error
-        Workshop workshop(name, date, time, duration);
-        workshopList.addWorkshop(workshop);
+        string rawLine;
+        while (getline(inFile, rawLine))
+        {
+            istringstream lineStream(rawLine);
+
+            string numberTok;
+            string titleTok;
+            string hoursTok;
+            string capacityTok;
+            string priceTok;
+
+            bool wellFormed =
+                getline(lineStream, numberTok,   PIPE_DELIM) &&
+                getline(lineStream, titleTok,    PIPE_DELIM) &&
+                getline(lineStream, hoursTok,    PIPE_DELIM) &&
+                getline(lineStream, capacityTok, PIPE_DELIM) &&
+                getline(lineStream, priceTok,    PIPE_DELIM);
+
+            if (!wellFormed)
+            {
+                cerr << "Skipped malformed record: " << rawLine << '\n';
+            }
+            else
+            {
+                int    workshopNumber = stoi(numberTok);
+                int    workshopHours  = stoi(hoursTok);
+                int    maxCapacity    = stoi(capacityTok);
+                double workshopPrice  = stod(priceTok);
+
+                Workshop newWorkshop(workshopNumber, titleTok,
+                                     workshopHours, maxCapacity, workshopPrice);
+
+                workshopList.addWorkshop(newWorkshop);
+            }
+        }
     }
-    file.close();   
-    std::cout << "Workshops loaded successfully from " << filename << std::endl;
-    std::cout << "Total workshops loaded: " << workshopList.getWorkshopCount() << std::endl;
-    std::cout << "Workshop list:" << std::endl;
-    workshopList.displayWorkshops();
 }
