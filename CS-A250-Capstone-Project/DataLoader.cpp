@@ -1,0 +1,75 @@
+/*
+    Team name
+    
+    Cherevko, Iuliana (Team Leader)
+    Sviridova, Anastasia
+    Nguyen, Long
+
+    Spring 2025
+    CS A250 - C++ 2
+
+    Workshop Hub    
+*/
+#include "DataLoader.h"
+#include "WorkshopList.h"
+
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
+using namespace std;
+
+namespace          // internal helper constant
+{
+    constexpr char PIPE_DELIM = '|';
+}
+
+void DataLoader::loadWorkshops(WorkshopList& workshopList,
+                               const string& fileName)
+{
+    ifstream inFile(fileName);
+    bool fileOpened = inFile.is_open();       // boolean flag instead of early‑return
+
+    if (!fileOpened)
+    {
+        cerr << "Unable to open " << fileName << '\n';
+    }
+    else
+    {
+        string rawLine;
+        while (getline(inFile, rawLine))
+        {
+            istringstream lineStream(rawLine);
+
+            string numberTok;
+            string titleTok;
+            string hoursTok;
+            string capacityTok;
+            string priceTok;
+
+            bool wellFormed =
+                getline(lineStream, numberTok,   PIPE_DELIM) &&
+                getline(lineStream, titleTok,    PIPE_DELIM) &&
+                getline(lineStream, hoursTok,    PIPE_DELIM) &&
+                getline(lineStream, capacityTok, PIPE_DELIM) &&
+                getline(lineStream, priceTok,    PIPE_DELIM);
+
+            if (!wellFormed)
+            {
+                cerr << "Skipped malformed record: " << rawLine << '\n';
+            }
+            else
+            {
+                int    workshopNumber = stoi(numberTok);
+                int    workshopHours  = stoi(hoursTok);
+                int    maxCapacity    = stoi(capacityTok);
+                double workshopPrice  = stod(priceTok);
+
+                Workshop newWorkshop(workshopNumber, titleTok,
+                                     workshopHours, maxCapacity, workshopPrice);
+
+                workshopList.addWorkshop(newWorkshop);
+            }
+        }
+    }
+}
