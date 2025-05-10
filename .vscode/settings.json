@@ -48,6 +48,7 @@
         "algorithm": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "iostream": "cpp"
     }
 }
