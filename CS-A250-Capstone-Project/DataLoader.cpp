@@ -56,7 +56,8 @@ void DataLoader::loadWorkshops(WorkshopList& workshopList,
 
             if (!wellFormed)
             {
-                cerr << "Skipped malformed record: " << rawLine << '\n';
+                cerr << "Skipped malformed record: "
+                     << rawLine << '\n';
             }
             else
             {
@@ -66,7 +67,8 @@ void DataLoader::loadWorkshops(WorkshopList& workshopList,
                 double workshopPrice  = stod(priceTok);
 
                 Workshop newWorkshop(workshopNumber, titleTok,
-                                     workshopHours, maxCapacity, workshopPrice);
+                                     workshopHours, maxCapacity,
+                                     workshopPrice);
 
                 workshopList.addWorkshop(newWorkshop);
             }

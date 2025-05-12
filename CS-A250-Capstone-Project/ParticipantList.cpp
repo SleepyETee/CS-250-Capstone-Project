@@ -22,7 +22,8 @@ void ParticipantList::addParticipant(const Participant& participant)
     participantList[participant] = {};
 }
 
-void ParticipantList::addWorkshopToParticipant(const Participant& participant, const Workshop& workshop)
+void ParticipantList::addWorkshopToParticipant(
+    const Participant& participant, const Workshop& workshop)
 {
     participantList[participant].push_back(workshop);
 }
@@ -42,7 +43,8 @@ std::string ParticipantList::getLastName(int participantID) const
     return findByID(participantID)->first.getLastName();
 }
 
-std::vector<Workshop> ParticipantList::getWorkshops(int participantID) const
+std::vector<Workshop>
+ParticipantList::getWorkshops(int participantID) const
 {
     return findByID(participantID)->second;
 }
@@ -61,6 +63,9 @@ std::map<Participant, std::vector<Workshop>>::const_iterator
 ParticipantList:: findByID(int participantID) const
 {
     return find_if(participantList.begin(), participantList.end(), 
-        [participantID] (const pair<Participant, vector<Workshop>>& aPair) 
-            { return (aPair.first.getID() == participantID); });
+        [participantID] (const pair<Participant, 
+        vector<Workshop>>& aPair)
+        { 
+            return (aPair.first.getID() == participantID); 
+        });
 } 

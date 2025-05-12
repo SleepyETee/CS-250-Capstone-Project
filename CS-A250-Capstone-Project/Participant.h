@@ -19,7 +19,8 @@
 class Participant
 {
 public:
-    Participant(int id, const std::string& theFirstName, const std::string& theLastName)
+    Participant(int id, const std::string& theFirstName,
+        const std::string& theLastName)
         : id(id), firstName(theFirstName), lastName(theLastName) {}
 
     int getID() const { return id; }

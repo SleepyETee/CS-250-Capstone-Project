@@ -21,7 +21,8 @@
 class DataLoader
 {
 public:
-    static void loadWorkshops(WorkshopList& workshopList, const std::string& filename);
+    static void loadWorkshops(WorkshopList& workshopList,
+        const std::string& filename);
 };
 
 #endif
