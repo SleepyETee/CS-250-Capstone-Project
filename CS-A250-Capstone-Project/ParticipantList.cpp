@@ -19,7 +19,7 @@ using namespace std;
 
 void ParticipantList::addParticipant(const Participant& participant)
 {
-    participantList[participant] = {};
+    participantList.insert(make_pair(participant, vector<Workshop>()));
 }
 
 void ParticipantList::addWorkshopToParticipant(
