@@ -39,26 +39,22 @@ int WorkshopList::getNumber(const Workshop& workshop) const
 
 string WorkshopList::getTitle(int workshopNo) const
 {
-    auto iter = findByNumber(workshopNo);
-    return iter->getTitle();
+    return findByNumber(workshopNo)->getTitle();
 }
 
 int WorkshopList::getHours(int workshopNo) const
 {
-    auto iter = findByNumber(workshopNo);
-    return iter->getHours();
+    return findByNumber(workshopNo)->getHours();
 }
 
 int WorkshopList::getCapacity(int workshopNo) const
 {
-    auto iter = findByNumber(workshopNo);
-    return iter->getCapacity();
+    return findByNumber(workshopNo)->getCapacity();
 }
 
 double WorkshopList::getPrice(int workshopNo) const
 {
-    auto iter = findByNumber(workshopNo);
-    return iter->getPrice();
+    return findByNumber(workshopNo)->getPrice();
 }
 
 set<Workshop>::const_iterator WorkshopList::findByNumber(int workshopNo) const
