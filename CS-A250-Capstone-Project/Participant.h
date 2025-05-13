@@ -1,5 +1,5 @@
 /*
-    Team name
+    Tech Wizards
     
     Cherevko, Iuliana (Team Leader)
     Sviridova, Anastasia

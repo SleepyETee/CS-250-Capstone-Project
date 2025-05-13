@@ -1,5 +1,5 @@
 ﻿/*
-    Team name
+    Tech Wizards
 
     Cherevko, Iuliana (Team Leader)
     Sviridova, Anastasia
@@ -17,47 +17,99 @@
 #include "WorkshopList.h"
 #include "DataLoader.h"
 
+#include <cassert>
 #include <iostream>
 #include <string>
 
 using namespace std;
 
+// Helper function
+static void displayWorkshop(const Workshop& workshop)
+{
+    cout << workshop.getNumber() << " | "
+        << workshop.getTitle() << " | "
+        << workshop.getHours() << "h | "
+        << workshop.getCapacity() << " seats | $"
+        << workshop.getPrice() << '\n';
+}
+
 int main()
 {
-    const string DATA_FILE = "workshop_database.txt";
-
     WorkshopList workshopCatalog;
-    DataLoader::loadWorkshops(workshopCatalog, DATA_FILE);
+    assert(workshopCatalog.isEmpty());
 
-    bool workshopsLoaded = !workshopCatalog.isEmpty();
-    cout << (workshopsLoaded
-        ? "Workshop data loaded successfully from " + DATA_FILE
-        : "No workshops were loaded from " + DATA_FILE)
-        << '\n';
+    const string dataFilePath = "workshop_database.txt";
+    DataLoader::loadWorkshops(workshopCatalog, dataFilePath);
+    assert(!workshopCatalog.isEmpty());
 
-    // --------------------------------
-    // 2.  Show a sample workshop title
-    // --------------------------------
-    if (workshopsLoaded)
-    {
-        const int DEMO_NUM = 11111;     // first record in starter file
-        cout << "→ Title for workshop #" << DEMO_NUM << ": "
-            << workshopCatalog.getTitle(DEMO_NUM) << '\n';
-    }
+    const int    expectedId = 11111;
+    const string expectedTitle = "Emoji Etiquette";
+    const int    expectedHours = 2;
+    const int    expectedCapacity = 30;
+    const double expectedPrice = 30.0;
 
-    // --------------------------------
-    // 3.  Create one participant
-    // --------------------------------
+    assert(workshopCatalog.getTitle(expectedId) ==
+        expectedTitle);
+    assert(workshopCatalog.getHours(expectedId) ==
+        expectedHours);
+    assert(workshopCatalog.getCapacity(expectedId) ==
+        expectedCapacity);
+
+    double actualPrica = workshopCatalog.getPrice(expectedId);
+    assert(abs(actualPrica - expectedPrice) < 1e-6);
+
+    Workshop manualWorkshop(55555, "Manual QA", 3, 10, 20.0);
+    workshopCatalog.addWorkshop(manualWorkshop);
+    assert(workshopCatalog.getNumber(manualWorkshop) == 55555);
+
+    // Show the manually added workshop
+    cout << "\nManual workshop just added:\n";
+    displayWorkshop(manualWorkshop);
+
+    cout << "Y WorkshopList & DataLoader OK\n";
+
     ParticipantList participantRoster;
-    Participant     demoParticipant(1, "Jane", "Garden");
-    participantRoster.addParticipant(demoParticipant);
+    assert(participantRoster.isEmpty());
 
-    cout << (participantRoster.isEmpty()
-        ? "Participant roster is empty.\n"
-        : "Participant added: " +
-        participantRoster.getFirstName(1) + ' ' +
-        participantRoster.getLastName(1) + " (ID 1)\n");
+    Participant alice(101, "Alice", "Smith");
+    Participant bob(102, "Bob", "Jones");
+    participantRoster.addParticipant(alice);
+    participantRoster.addParticipant(bob);
+    assert(!participantRoster.isEmpty());
 
-    cout << "--- Demo run complete ---\n";
+    // Test ID and name getters
+    assert(participantRoster.getID(alice) == 101);
+    assert(participantRoster.getID(bob) == 102);
+    assert(participantRoster.getFirstName(101) == "Alice");
+    assert(participantRoster.getLastName(101) == "Smith");
+    assert(participantRoster.getFirstName(102) == "Bob");
+    assert(participantRoster.getLastName(102) == "Jones");
+
+    // Attach workshops to participants
+    participantRoster.addWorkshopToParticipant(
+        alice, manualWorkshop);
+    participantRoster.addWorkshopToParticipant(
+        bob, manualWorkshop);
+
+    vector<Workshop> aliceWorkshops =
+        participantRoster.getWorkshops(101);
+    vector<Workshop> bobWorkshops =
+        participantRoster.getWorkshops(102);
+
+    assert(aliceWorkshops.size() == 1 &&
+        aliceWorkshops[0].getNumber() == 55555);
+    assert(bobWorkshops.size() == 1 &&
+        bobWorkshops[0].getNumber() == 55555);
+
+    cout << "Y ParticipantList OK\n";
+
+    workshopCatalog.clearList();
+    participantRoster.clearList();
+    assert(workshopCatalog.isEmpty());
+    assert(participantRoster.isEmpty());
+
+    cout << "Y clearList & isEmpty OK (after clearing)\n";
+
+    cout << "\nAll public functions tested successfully!" << endl;
     return 0;
 }
