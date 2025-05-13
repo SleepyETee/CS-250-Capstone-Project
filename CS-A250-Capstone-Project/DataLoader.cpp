@@ -16,7 +16,6 @@
 
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 using namespace std;
 
@@ -26,54 +25,36 @@ namespace
 }
 
 void DataLoader::loadWorkshops(WorkshopList& workshopList,
-                               const string& fileName)
+    const string& fileName)
 {
     ifstream inFile(fileName);
-    bool fileOpened = inFile.is_open();
 
-    if (!fileOpened)
+    string rawLine;
+    while (getline(inFile, rawLine))
     {
-        cerr << "Unable to open " << fileName << '\n';
-    }
-    else
-    {
-        string rawLine;
+        istringstream lineStream(rawLine);
 
-        while (getline(inFile, rawLine))
-        {
-            istringstream lineStream(rawLine);
+        string numberTok;
+        string titleTok;
+        string hoursTok;
+        string capacityTok;
+        string priceTok;
 
-            string numberTok;
-            string titleTok;
-            string hoursTok;
-            string capacityTok;
-            string priceTok;
+        getline(lineStream, numberTok, PIPE_DELIM);
+        getline(lineStream, titleTok, PIPE_DELIM);
+        getline(lineStream, hoursTok, PIPE_DELIM);
+        getline(lineStream, capacityTok, PIPE_DELIM);
+        getline(lineStream, priceTok, PIPE_DELIM);
 
-            bool wellFormed =
-                getline(lineStream, numberTok,   PIPE_DELIM) &&
-                getline(lineStream, titleTok,    PIPE_DELIM) &&
-                getline(lineStream, hoursTok,    PIPE_DELIM) &&
-                getline(lineStream, capacityTok, PIPE_DELIM) &&
-                getline(lineStream, priceTok,    PIPE_DELIM);
+        int    workshopNumber = stoi(numberTok);
+        int    workshopHours = stoi(hoursTok);
+        int    maxCapacity = stoi(capacityTok);
+        double workshopPrice = stod(priceTok);
 
-            if (!wellFormed)
-            {
-                cerr << "Skipped malformed record: "
-                     << rawLine << '\n';
-            }
-            else
-            {
-                int    workshopNumber = stoi(numberTok);
-                int    workshopHours  = stoi(hoursTok);
-                int    maxCapacity    = stoi(capacityTok);
-                double workshopPrice  = stod(priceTok);
+        Workshop newWorkshop(workshopNumber, titleTok,
+            workshopHours, maxCapacity, workshopPrice);
 
-                Workshop newWorkshop(workshopNumber, titleTok,
-                                     workshopHours, maxCapacity,
-                                     workshopPrice);
-
-                workshopList.addWorkshop(newWorkshop);
-            }
-        }
+        workshopList.addWorkshop(newWorkshop);
     }
 }
+
