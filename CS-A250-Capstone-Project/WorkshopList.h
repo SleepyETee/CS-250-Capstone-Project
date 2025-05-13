@@ -27,6 +27,8 @@ public:
     int getHours(int workshopNo) const;
     int getCapacity(int workshopNo) const;
     double getPrice(int workshopNo) const;
+    const Workshop& getWorkshop(int workshopNo) const;
+    const std::set<Workshop>& getAllWorkshops() const;
 
     bool isEmpty() const;
     void clearList();

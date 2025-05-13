@@ -47,6 +47,16 @@ double WorkshopList::getPrice(int workshopNo) const
     return findByNumber(workshopNo)->getPrice();
 }
 
+const Workshop& WorkshopList::getWorkshop(int workshopNo) const
+{
+    return *(findByNumber(workshopNo));
+}
+
+const set<Workshop>& WorkshopList::getAllWorkshops() const
+{
+    return workshopList;
+}
+
 bool WorkshopList::isEmpty() const
 {
     return workshopList.empty();
