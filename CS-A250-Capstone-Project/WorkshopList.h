@@ -33,7 +33,8 @@ public:
 
 private:
     std::set<Workshop> workshopList;
-    std::set<Workshop>::const_iterator findByNumber(int workshopNo) const;
+    std::set<Workshop>::const_iterator
+        findByNumber(int workshopNo) const;
 };
 
 #endif

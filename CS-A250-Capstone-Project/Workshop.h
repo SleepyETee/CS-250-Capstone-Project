@@ -18,8 +18,8 @@
 
 class Workshop {
 public:
-    Workshop(int theNumber, const std::string& theTitle, int theHours,
-        int theCapacity, double thePrice)
+    Workshop(int theNumber, const std::string& theTitle,
+        int theHours, int theCapacity, double thePrice)
         : number(theNumber), title(theTitle), hours(theHours),
         capacity(theCapacity), price(thePrice) {}
 
@@ -30,7 +30,7 @@ public:
     double getPrice() const { return price; };
 
     bool operator<(const Workshop& workshop) const 
-        { return number < workshop.number; };
+        { return (number < workshop.number); };
 
 private:
     int number;

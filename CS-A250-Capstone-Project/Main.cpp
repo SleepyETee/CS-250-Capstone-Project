@@ -11,7 +11,6 @@
     Workshop Hub
 */
 
-
 #include "ParticipantList.h"
 #include "Participant.h"
 #include "Workshop.h"

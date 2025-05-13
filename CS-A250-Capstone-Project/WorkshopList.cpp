@@ -22,16 +22,6 @@ void WorkshopList::addWorkshop(const Workshop& workshop)
     workshopList.insert(workshop);
 }
 
-void WorkshopList::clearList()
-{
-    workshopList.clear();
-}
-
-bool WorkshopList::isEmpty() const
-{
-    return workshopList.empty();
-}
-
 int WorkshopList::getNumber(const Workshop& workshop) const
 {
     return workshop.getNumber();
@@ -57,7 +47,18 @@ double WorkshopList::getPrice(int workshopNo) const
     return findByNumber(workshopNo)->getPrice();
 }
 
-set<Workshop>::const_iterator WorkshopList::findByNumber(int workshopNo) const
+void WorkshopList::clearList()
+{
+    workshopList.clear();
+}
+
+bool WorkshopList::isEmpty() const
+{
+    return workshopList.empty();
+}
+
+set<Workshop>::const_iterator
+WorkshopList::findByNumber(int workshopNo) const
 {
     return find_if(workshopList.begin(), workshopList.end(),
                     [workshopNo](const Workshop& current)

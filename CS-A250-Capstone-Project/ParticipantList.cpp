@@ -19,7 +19,8 @@ using namespace std;
 
 void ParticipantList::addParticipant(const Participant& participant)
 {
-    participantList.insert(make_pair(participant, vector<Workshop>()));
+    participantList.insert(
+        make_pair(participant, vector<Workshop>()));
 }
 
 void ParticipantList::addWorkshopToParticipant(
@@ -33,17 +34,17 @@ int ParticipantList::getID(const Participant& participant) const
     return participant.getID();
 }
 
-std::string ParticipantList::getFirstName(int participantID) const
+string ParticipantList::getFirstName(int participantID) const
 {
     return findByID(participantID)->first.getFirstName();
 }
 
-std::string ParticipantList::getLastName(int participantID) const
+string ParticipantList::getLastName(int participantID) const
 {
     return findByID(participantID)->first.getLastName();
 }
 
-std::vector<Workshop>
+vector<Workshop>
 ParticipantList::getWorkshops(int participantID) const
 {
     return findByID(participantID)->second;
@@ -59,7 +60,7 @@ void ParticipantList::clearList()
     participantList.clear();
 }
 
-std::map<Participant, std::vector<Workshop>>::const_iterator 
+map<Participant, vector<Workshop>>::const_iterator 
 ParticipantList:: findByID(int participantID) const
 {
     return find_if(participantList.begin(), participantList.end(), 
