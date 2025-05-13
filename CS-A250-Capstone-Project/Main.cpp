@@ -24,7 +24,7 @@
 using namespace std;
 
 // Helper function
-static void displayWorkshop(const Workshop& workshop)
+void displayWorkshop(const Workshop& workshop)
 {
     cout << workshop.getNumber() << " | "
         << workshop.getTitle() << " | "
@@ -55,8 +55,8 @@ int main()
     assert(workshopCatalog.getCapacity(expectedId) ==
         expectedCapacity);
 
-    double actualPrica = workshopCatalog.getPrice(expectedId);
-    assert(abs(actualPrica - expectedPrice) < 1e-6);
+    double actualPrice = workshopCatalog.getPrice(expectedId);
+    assert(abs(actualPrice - expectedPrice) < 1e-6);
 
     Workshop manualWorkshop(55555, "Manual QA", 3, 10, 20.0);
     workshopCatalog.addWorkshop(manualWorkshop);
