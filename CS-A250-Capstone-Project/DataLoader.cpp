@@ -10,6 +10,7 @@
 
     Workshop Hub    
 */
+
 #include "DataLoader.h"
 #include "WorkshopList.h"
 
@@ -19,7 +20,7 @@
 
 using namespace std;
 
-namespace          // internal helper constant
+namespace
 {
     constexpr char PIPE_DELIM = '|';
 }
@@ -28,7 +29,7 @@ void DataLoader::loadWorkshops(WorkshopList& workshopList,
                                const string& fileName)
 {
     ifstream inFile(fileName);
-    bool fileOpened = inFile.is_open();       // boolean flag instead of early‑return
+    bool fileOpened = inFile.is_open();
 
     if (!fileOpened)
     {
@@ -37,6 +38,7 @@ void DataLoader::loadWorkshops(WorkshopList& workshopList,
     else
     {
         string rawLine;
+
         while (getline(inFile, rawLine))
         {
             istringstream lineStream(rawLine);

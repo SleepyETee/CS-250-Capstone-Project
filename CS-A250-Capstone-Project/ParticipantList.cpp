@@ -61,10 +61,10 @@ void ParticipantList::clearList()
 }
 
 map<Participant, vector<Workshop>>::const_iterator 
-ParticipantList:: findByID(int participantID) const
+ParticipantList::findByID(int participantID) const
 {
-    return find_if(participantList.begin(), participantList.end(), 
-        [participantID] (const pair<Participant, 
+    return find_if(participantList.begin(), participantList.end(),
+        [participantID] (const pair<Participant,
         vector<Workshop>>& aPair)
         { 
             return (aPair.first.getID() == participantID); 

@@ -63,6 +63,6 @@ WorkshopList::findByNumber(int workshopNo) const
     return find_if(workshopList.begin(), workshopList.end(),
                     [workshopNo](const Workshop& current)
                     {
-                        return current.getNumber() == workshopNo;
+                        return (current.getNumber() == workshopNo);
                     });
 }
