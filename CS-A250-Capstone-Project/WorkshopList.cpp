@@ -47,17 +47,17 @@ double WorkshopList::getPrice(int workshopNo) const
     return findByNumber(workshopNo)->getPrice();
 }
 
-void WorkshopList::clearList()
-{
-    workshopList.clear();
-}
-
 bool WorkshopList::isEmpty() const
 {
     return workshopList.empty();
 }
 
-set<Workshop>::const_iterator
+void WorkshopList::clearList()
+{
+    workshopList.clear();
+}
+
+set<Workshop>::iterator
 WorkshopList::findByNumber(int workshopNo) const
 {
     return find_if(workshopList.begin(), workshopList.end(),

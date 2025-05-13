@@ -29,7 +29,7 @@ public:
     int getCapacity() const { return capacity; };
     double getPrice() const { return price; };
 
-    bool operator<(const Workshop& workshop) const 
+    bool operator<(const Workshop& workshop) const
         { return (number < workshop.number); };
 
 private:

@@ -25,36 +25,36 @@ namespace
 }
 
 void DataLoader::loadWorkshops(WorkshopList& workshopList,
-    const string& fileName)
+    const string& filename)
 {
-    ifstream inFile(fileName);
-
+    ifstream inFile(filename);
     string rawLine;
+
     while (getline(inFile, rawLine))
     {
         istringstream lineStream(rawLine);
 
-        string numberTok;
-        string titleTok;
-        string hoursTok;
-        string capacityTok;
-        string priceTok;
+        string numberToken;
+        getline(lineStream, numberToken, PIPE_DELIM);
+        int workshopNumber = stoi(numberToken);
 
-        getline(lineStream, numberTok, PIPE_DELIM);
-        getline(lineStream, titleTok, PIPE_DELIM);
-        getline(lineStream, hoursTok, PIPE_DELIM);
-        getline(lineStream, capacityTok, PIPE_DELIM);
-        getline(lineStream, priceTok, PIPE_DELIM);
+        string titleToken;
+        getline(lineStream, titleToken, PIPE_DELIM);
 
-        int    workshopNumber = stoi(numberTok);
-        int    workshopHours = stoi(hoursTok);
-        int    maxCapacity = stoi(capacityTok);
-        double workshopPrice = stod(priceTok);
+        string hoursToken;
+        getline(lineStream, hoursToken, PIPE_DELIM);
+        int workshopHours = stoi(hoursToken);
 
-        Workshop newWorkshop(workshopNumber, titleTok,
-            workshopHours, maxCapacity, workshopPrice);
+        string capacityToken;
+        getline(lineStream, capacityToken, PIPE_DELIM);
+        int maxCapacity = stoi(capacityToken);
 
-        workshopList.addWorkshop(newWorkshop);
+        string priceToken;
+        getline(lineStream, priceToken, PIPE_DELIM);
+        double workshopPrice = stod(priceToken);
+
+        workshopList.addWorkshop(Workshop(workshopNumber, titleToken,
+            workshopHours, maxCapacity, workshopPrice));
     }
 }
 

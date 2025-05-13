@@ -24,7 +24,7 @@
 using namespace std;
 
 // Helper function
-void displayWorkshop(const Workshop& workshop)
+static void displayWorkshop(const Workshop& workshop)
 {
     cout << workshop.getNumber() << " | "
         << workshop.getTitle() << " | "
@@ -42,10 +42,10 @@ int main()
     DataLoader::loadWorkshops(workshopCatalog, dataFilePath);
     assert(!workshopCatalog.isEmpty());
 
-    const int    expectedId = 11111;
+    const int expectedId = 11111;
     const string expectedTitle = "Emoji Etiquette";
-    const int    expectedHours = 2;
-    const int    expectedCapacity = 30;
+    const int expectedHours = 2;
+    const int expectedCapacity = 30;
     const double expectedPrice = 30.0;
 
     assert(workshopCatalog.getTitle(expectedId) ==

@@ -38,7 +38,7 @@ public:
 
 private:
     std::map<Participant, std::vector<Workshop>> participantList;
-    std::map<Participant, std::vector<Workshop>>::const_iterator 
+    std::map<Participant, std::vector<Workshop>>::const_iterator
         findByID(int participantID) const; 
 };
 
