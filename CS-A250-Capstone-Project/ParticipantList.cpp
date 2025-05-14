@@ -58,9 +58,16 @@ ParticipantList::getParticipant(int participantID) const
 
 void ParticipantList::cancelWorkshop(int participantID, int workshopNo)
 {
+    auto iterMap = find_if(participantList.begin(), participantList.end(),
+        [participantID] (const pair<Participant,
+            vector<Workshop>>& aPair)
+        {
+            return (aPair.first.getID() == participantID);
+        });
+    auto iterWorkshop = find(iterMap->second.begin(), iterMap->second.end(), workshopNo);
 
+    iterMap->second.erase(iterWorkshop);
 }
-
 
 bool ParticipantList::isEmpty() const
 {
