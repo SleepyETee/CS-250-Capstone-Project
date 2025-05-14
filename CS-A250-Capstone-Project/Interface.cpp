@@ -12,6 +12,7 @@ Tech Wizards
 */
 
 #include "Interface.h"
+#include "Formatter.h"
 
 #include <iostream>
 #include <string>
@@ -47,7 +48,7 @@ bool verifyIdentification(const ParticipantList& participantList,
 
 void viewAllWorkshops(const WorkshopList& workshopList)
 {
-
+    //Formatter::printOpenWorkshops();
 }
 
 void viewOpenWorkshops(const WorkshopList& workshopList,
