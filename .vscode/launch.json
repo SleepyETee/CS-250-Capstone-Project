@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/CS-250-Capstone-Project-main/CS-250-Capstone-Project-main/build/Main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/CS-250-Capstone-Project-main/CS-250-Capstone-Project-main",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "build"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/src/index.js",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
