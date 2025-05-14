@@ -24,19 +24,16 @@ public:
         : number(theNumber), title(theTitle), hours(theHours),
         capacity(theCapacity), price(thePrice) {}
 
-    int getNumber() const { return number; };
-    std::string getTitle() const { return title; };
-    int getHours() const { return hours; };
-    int getCapacity() const { return capacity; };
-    double getPrice() const { return price; };
+    int getNumber() const { return number; }
+    std::string getTitle() const { return title; }
+    int getHours() const { return hours; }
+    int getCapacity() const { return capacity; }
+    double getPrice() const { return price; }
 
     bool operator<(const Workshop& workshop) const
-        { return (number < workshop.number); };
-    // bool operator==(const Workshop& workshop) const
-    //     { return (number == workshop.number); };
-        
-bool operator== (const Workshop &workshop) const { return number == workshop.getNumber(); }
-
+        { return (number < workshop.number); }
+    bool operator== (const Workshop& workshop) const
+        { return (number == workshop.number); }
 
 private:
     int number;

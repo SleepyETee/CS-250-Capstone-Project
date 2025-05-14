@@ -64,9 +64,9 @@ void ParticipantList::cancelWorkshop(int participantID, int workshopNo)
         {
             return (aPair.first.getID() == participantID);
         });
-    auto iterWorkshop = find(iterMap->second.begin(), iterMap->second.end(), workshopNo);
-
-    iterMap->second.erase(iterWorkshop);
+    //Workshop workshop = iterMap->second.getWorkshop(workshopNo);
+//
+    //iterMap->second.erase(iterWorkshop);
 }
 
 bool ParticipantList::isEmpty() const
