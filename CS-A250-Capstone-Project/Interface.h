@@ -31,4 +31,8 @@ bool verifyIdentification(const ParticipantList& participantList,
                           const std::string& firstName,
                           const std::string& lastName);
 
+void viewAllWorkshops(const WorkshopList& workshopList);
+
+
+
 #endif
