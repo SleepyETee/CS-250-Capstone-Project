@@ -31,6 +31,8 @@ public:
 
     bool operator<(const Workshop& workshop) const
         { return (number < workshop.number); };
+    bool operator==(const Workshop& workshop) const
+        { return (number == workshop.number); };
 
 private:
     int number;
