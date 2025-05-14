@@ -49,5 +49,11 @@
     <Text Include="workshop_database.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="participant_database.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="registration_database.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -136,6 +136,8 @@
     <ClInclude Include="WorkshopList.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="participant_database.txt" />
+    <Text Include="registration_database.txt" />
     <Text Include="workshop_database.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
