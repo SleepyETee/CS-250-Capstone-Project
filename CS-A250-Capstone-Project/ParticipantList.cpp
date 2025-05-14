@@ -50,6 +50,18 @@ ParticipantList::getWorkshops(int participantID) const
     return findByID(participantID)->second;
 }
 
+const Participant&
+ParticipantList::getParticipant(int participantID) const
+{
+    return findByID(participantID)->first;
+}
+
+void ParticipantList::cancelWorkshop(int participantID, int workshopNo)
+{
+
+}
+
+
 bool ParticipantList::isEmpty() const
 {
     return participantList.empty();

@@ -124,12 +124,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataLoader.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ParticipantList.cpp" />
     <ClCompile Include="WorkshopList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataLoader.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="Participant.h" />
     <ClInclude Include="ParticipantList.h" />
     <ClInclude Include="Workshop.h" />
