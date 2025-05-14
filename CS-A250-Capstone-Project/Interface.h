@@ -14,7 +14,6 @@ Tech Wizards
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include "Workshop.h"
 #include "WorkshopList.h"
 #include "ParticipantList.h"
 
@@ -33,6 +32,19 @@ bool verifyIdentification(const ParticipantList& participantList,
 
 void viewAllWorkshops(const WorkshopList& workshopList);
 
+void viewOpenWorkshops(const WorkshopList& workshopList,
+                       const RegistrationManager& registration);
 
+void viewWorkshopsByPrice(const WorkshopList& workshopList);
+
+void viewParticipantWorkshops(const ParticipantList& participantList);
+
+void registerForWorkshop(WorkshopList& workshopList,
+                        ParticipantList& participantList,
+                        RegistrationManager& registration);
+
+void cancelWorkshop(WorkshopList& workshopList,
+                    ParticipantList& participantList,
+                    RegistrationManager& registration);
 
 #endif
