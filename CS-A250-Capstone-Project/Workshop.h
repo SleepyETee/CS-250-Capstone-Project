@@ -43,11 +43,19 @@ public:
 <<<<<<<< Updated upstream:CS-A250-Capstone-Project/Workshop.h
     bool operator<(const Workshop& workshop) const
         { return (number < workshop.number); };
+<<<<<<< HEAD
     bool operator==(const Workshop& workshop) const
         { return (number == workshop.number); };
 ========
     bool operator<(const Workshop& workshop) const { return number < workshop.number; };
 >>>>>>>> Stashed changes:CS-250-Capstone-Project-main/Header Files/Workshop.h
+=======
+    // bool operator==(const Workshop& workshop) const
+    //     { return (number == workshop.number); };
+        
+bool operator== (const Workshop &workshop) const { return number == workshop.getNumber(); }
+
+>>>>>>> 546f417e5be54449e2bb60339b3ae6f8e43a3fd5
 
 private:
     int number;
