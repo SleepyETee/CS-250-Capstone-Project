@@ -16,6 +16,7 @@ Tech Wizards
 
 #include "WorkshopList.h"
 #include "ParticipantList.h"
+#include "RegistrationManager.h"
 
 void processMenu(WorkshopList& workshopList,
                  ParticipantList& participantList,

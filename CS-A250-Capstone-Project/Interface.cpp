@@ -42,7 +42,7 @@ bool verifyIdentification(const ParticipantList& participantList,
                           const std::string& firstName,
                           const std::string& lastName)
 {
-
+    return false;
 }
 
 void viewAllWorkshops(const WorkshopList& workshopList)

@@ -15,6 +15,7 @@
 #define WORKSHOP_H
 
 #include <string>
+#include <iostream>
 
 class Workshop {
 public:
