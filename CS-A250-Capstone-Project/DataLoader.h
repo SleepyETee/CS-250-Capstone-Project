@@ -15,6 +15,8 @@
 #define DATALOADER_H
 
 #include "WorkshopList.h"
+#include "RegistrationManager.h"
+#include "ParticipantList.h"
 
 #include <string>
 
@@ -22,6 +24,10 @@ class DataLoader
 {
 public:
     static void loadWorkshops(WorkshopList& workshopList,
+        const std::string& filename);
+    static void loadParticipants(ParticipantList& participantList,
+        const std::string& filename);
+    static void loadRegistration(RegistrationManager& registrationManager,
         const std::string& filename);
 };
 
