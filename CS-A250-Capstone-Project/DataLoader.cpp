@@ -58,3 +58,50 @@ void DataLoader::loadWorkshops(WorkshopList& workshopList,
     }
 }
 
+void DataLoader::loadParticipants(ParticipantList& participantList,
+    const string& filename)
+{
+    ifstream inFile(filename);
+    string rawLine;
+
+    while (getline(inFile, rawLine))
+    {
+        istringstream lineStream(rawLine);
+
+        string idToken;
+        getline(lineStream, idToken, PIPE_DELIM);
+        int participantID = stoi(idToken);
+
+        string firstNameToken;
+        getline(lineStream, firstNameToken, PIPE_DELIM);
+        string firstName = firstNameToken;
+
+        string lastNameToken;
+        getline(lineStream, lastNameToken, PIPE_DELIM);
+        string lastName = lastNameToken;
+
+        participantList.addParticipant(Participant(participantID, firstName, lastName));
+    }
+}
+
+void DataLoader::loadRegistration(RegistrationManager& registrationManager,
+    const string& filename)
+{
+    ifstream inFile(filename);
+    string rawLine;
+
+    while (getline(inFile, rawLine))
+    {
+        istringstream lineStream(rawLine);
+
+        string participantIDToken;
+        getline(lineStream, participantIDToken, PIPE_DELIM);
+        int participantID = stoi(participantIDToken);
+
+        string workshopNumberToken;
+        getline(lineStream, workshopNumberToken, PIPE_DELIM);
+        int workshopNumber = stoi(workshopNumberToken);
+
+        registrationManager.registerParticipant(participantID, workshopNumber);
+    }
+}
