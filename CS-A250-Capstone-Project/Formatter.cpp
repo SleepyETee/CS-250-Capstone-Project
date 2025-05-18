@@ -77,7 +77,7 @@ void Formatter::printOpenWorkshops(const WorkshopList& workshopList,
 
     if (!hasOpenWorkshops)
     {
-        cout << "There are no open workshops.\n\n";
+        cerr << "There are no open workshops.\n\n";
     }
     else
     {
@@ -130,7 +130,7 @@ void Formatter::printParticipantWorkshops(const ParticipantList& participantList
 
     if (!hasWorkshops)
     {
-        cout << "You are not currently registered for any workshops.\n\n";
+        cerr << "You are not currently registered for any workshops.\n\n";
     }
     else
     {

@@ -42,23 +42,9 @@ public:
 
 private:
     std::map<Participant, std::vector<Workshop>> participantList;
-<<<<<<<< Updated upstream:CS-A250-Capstone-Project/ParticipantList.h
-    std::map<Participant, std::vector<Workshop>>::const_iterator
-========
     std::map<Participant, std::vector<Workshop>>::const_iterator 
-<<<<<<< Updated upstream:CS-250-Capstone-Project-main/CS-250-Capstone-Project-main/Header Files/ParticipantList.h
->>>>>>>> Stashed changes:CS-250-Capstone-Project-main/Header Files/ParticipantList.h
-        findByID(int participantID) const; 
-=======
         findByID(int participantID) const;
         
-    // Helper method to check if iterator is valid and throw exception if not
-    void checkIterator(std::map<Participant, std::vector<Workshop>>::const_iterator iter, int participantID) const {
-        if (iter == participantList.end()) {
-            throw std::runtime_error("Participant with ID #" + std::to_string(participantID) + " not found");
-        }
-    }
->>>>>>> Stashed changes:CS-250-Capstone-Project-main/Header Files/ParticipantList.h
 };
 
 #endif
