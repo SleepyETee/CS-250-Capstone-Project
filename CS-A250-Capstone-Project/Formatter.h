@@ -1,1 +1,34 @@
-#pragma once
+/*
+    Tech Wizards
+    
+    Cherevko, Iuliana (Team Leader)
+    Sviridova, Anastasia
+    Nguyen, Long
+
+    Spring 2025
+    CS A250 - C++ 2
+
+    Workshop Hub    
+*/
+
+#ifndef FORMATTER_H
+#define FORMATTER_H
+
+class WorkshopList;
+class ParticipantList;
+class RegistrationManager;
+class Workshop;
+
+class Formatter
+{
+public:
+    static void displayMenu();
+    static void printAllWorkshops(const WorkshopList& workshopList);
+    static void printOpenWorkshops(const WorkshopList& workshopList, const RegistrationManager& registration);
+    static void printWorkshopsByPrice(const WorkshopList& workshopList, double maxPrice);
+    static void printParticipantWorkshops(const ParticipantList& participantList, int participantId);
+    static void printWorkshop(const Workshop& workshop);
+    static void pauseAndWait();
+};
+
+#endif

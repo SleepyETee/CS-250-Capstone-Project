@@ -17,36 +17,46 @@
 
 using namespace std;
 
+RegistrationManager::RegistrationManager(
+    const WorkshopList& workshopList,
+    ParticipantList& participantList)
+    : workshopList(workshopList),
+    participantList(participantList) {}
+
 void RegistrationManager::addOpenWorkshop(int workshopNo)
 {
     openWorkshops.insert(workshopNo);
     registration.insert(make_pair(workshopNo, set<int>()));
 }
 
-void RegistrationManager::registerParticipant(int workshopNo, int participantID)
+void RegistrationManager::registerParticipant(
+    int workshopNo, int participantID)
 {
-    registration.find(workshopNo)->second.insert(participantID);
+    registration[workshopNo].insert(participantID);
 
-    Workshop workshop = workshopList.getWorkshop(workshopNo);
     participantList.addWorkshopToParticipant(
         participantList.getParticipant(participantID),
-        workshop
+        workshopList.getWorkshop(workshopNo)
     );
 
-    if (workshop.getCapacity() == workshop.getNumber())
+    if (static_cast<int>(registration[workshopNo].size()) >=
+        workshopList.getWorkshop(workshopNo).getCapacity())
     {
         closeWorkshop(workshopNo);
     }
 }
 
-void RegistrationManager::unregisterParticipant(int workshopNo, int participantID)
+void RegistrationManager::unregisterParticipant(
+    int workshopNo, int participantID)
 {
     registration[workshopNo].erase(participantID);
-    Workshop workshop = workshopList.getWorkshop(workshopNo);
-    if (workshop.getCapacity() > workshop.getNumber())
+
+    if (static_cast<int>(registration[workshopNo].size()) <
+        workshopList.getWorkshop(workshopNo).getCapacity())
     {
         reopenWorkshop(workshopNo);
     }
+
     participantList.cancelWorkshop(participantID, workshopNo);
 }
 

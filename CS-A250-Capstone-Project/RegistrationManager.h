@@ -27,8 +27,7 @@ class RegistrationManager
 {
 public:
     RegistrationManager(const WorkshopList& workshopList,
-        ParticipantList& participantList)
-        : workshopList(workshopList), participantList(participantList) {}
+        ParticipantList& participantList);
 
     void addOpenWorkshop(int workshopNo);
     void registerParticipant(int workshopNo, int participantID);
