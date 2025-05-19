@@ -166,8 +166,7 @@ void cancelRegistration(WorkshopList &workshopList,
     cin >> selection;
     participantList.cancelWorkshop(id, selection);
     registration.unregisterParticipant(selection, id);
-    cout << "\nYour registration for the following workshop has been "
-            "cancelled:\n";
+    cout << "\nYour registration for the following workshop has been cancelled:\n";
     Formatter::printWorkshop(workshopList.getWorkshop(selection));
     cout << "\nA confirmation email with payment details has been sent to you."
          << endl;
