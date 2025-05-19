@@ -44,7 +44,7 @@ void registerForWorkshop(WorkshopList& workshopList,
                         ParticipantList& participantList,
                         RegistrationManager& registration);
 
-void cancelWorkshop(WorkshopList& workshopList,
+void cancelRegistration(WorkshopList& workshopList,
                     ParticipantList& participantList,
                     RegistrationManager& registration);
 
