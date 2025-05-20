@@ -28,13 +28,17 @@ using namespace std;
 int main()
 {
     ParticipantList participantList;
-    DataLoader::loadParticipants(participantList, "participant_database.txt");
+    DataLoader::loadParticipants(participantList,
+        "participant_database.txt");
 
     WorkshopList workshopList;
-    DataLoader::loadWorkshops(workshopList, "workshop_database.txt");
+    DataLoader::loadWorkshops(workshopList,
+        "workshop_database.txt");
 
-    RegistrationManager registrationManager(workshopList, participantList);
-    DataLoader::loadRegistration(registrationManager, "registration_database.txt");
+    RegistrationManager registrationManager(workshopList, 
+        participantList);
+    DataLoader::loadRegistration(registrationManager,
+        "registration_database.txt");
 
     processMenu(workshopList, participantList, registrationManager);
 

@@ -28,9 +28,10 @@ using namespace std;
 
 namespace
 {
-    constexpr char STAR_LINE[]   = "*********************************************\n";
+    constexpr char STAR_LINE[] = 
+        "*********************************************\n";
     constexpr char MENU_INDENT[] = "\t";
-    constexpr int  PRICE_WIDTH   = 6;
+    constexpr int  PRICE_WIDTH = 6;
 }
 
 void Formatter::displayMenu()
