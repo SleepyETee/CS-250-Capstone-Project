@@ -38,7 +38,8 @@ void viewOpenWorkshops(const WorkshopList& workshopList,
 
 void viewWorkshopsByPrice(const WorkshopList& workshopList);
 
-void viewParticipantWorkshops(const ParticipantList& participantList);
+void viewParticipantWorkshops(
+    const ParticipantList& participantList);
 
 void registerForWorkshop(WorkshopList& workshopList,
                         ParticipantList& participantList,

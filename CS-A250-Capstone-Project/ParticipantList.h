@@ -20,7 +20,6 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <stdexcept>
 
 class ParticipantList
 {

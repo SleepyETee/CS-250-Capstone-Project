@@ -39,7 +39,7 @@ void RegistrationManager::registerParticipant(
         workshopList.getWorkshop(workshopNo)
     );
 
-    if (static_cast<int>(registration[workshopNo].size()) >=
+    if (static_cast<int>(registration[workshopNo].size()) ==
         workshopList.getWorkshop(workshopNo).getCapacity())
     {
         closeWorkshop(workshopNo);

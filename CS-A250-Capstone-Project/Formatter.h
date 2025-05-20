@@ -24,9 +24,12 @@ class Formatter
 public:
     static void displayMenu();
     static void printAllWorkshops(const WorkshopList& workshopList);
-    static void printOpenWorkshops(const WorkshopList& workshopList, const RegistrationManager& registration);
-    static void printWorkshopsByPrice(const WorkshopList& workshopList, double maxPrice);
-    static void printParticipantWorkshops(const ParticipantList& participantList, int participantId);
+    static void printOpenWorkshops(const WorkshopList& workshopList,
+        const RegistrationManager& registration);
+    static void printWorkshopsByPrice(
+        const WorkshopList& workshopList, double price);
+    static void printParticipantWorkshops(
+        const ParticipantList& participantList, int participantID);
     static void printWorkshop(const Workshop& workshop);
     static void pauseAndWait();
 };

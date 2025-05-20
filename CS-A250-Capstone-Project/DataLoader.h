@@ -27,7 +27,8 @@ public:
         const std::string& filename);
     static void loadParticipants(ParticipantList& participantList,
         const std::string& filename);
-    static void loadRegistration(RegistrationManager& registrationManager,
+    static void loadRegistration(
+        RegistrationManager& registrationManager,
         const std::string& filename);
 };
 

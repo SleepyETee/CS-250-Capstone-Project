@@ -56,16 +56,19 @@ ParticipantList::getParticipant(int participantID) const
     return findByID(participantID)->first;
 }
 
-void ParticipantList::cancelWorkshop(int participantID, int workshopNo)
+void 
+ParticipantList::cancelWorkshop(int participantID, int workshopNo)
 {
-    auto iterMap = find_if(participantList.begin(), participantList.end(),
+    auto iterMap = find_if(participantList.begin(),
+        participantList.end(),
         [participantID] (const pair<Participant,
             vector<Workshop>>& aPair)
         {
             return (aPair.first.getID() == participantID);
         });
 
-    auto iterVector = find_if(iterMap->second.begin(), iterMap->second.end(),
+    auto iterVector = find_if(iterMap->second.begin(),
+        iterMap->second.end(),
         [workshopNo](const Workshop& workshop)
         {
             return (workshop.getNumber() == workshopNo);

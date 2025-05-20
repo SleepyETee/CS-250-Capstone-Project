@@ -80,11 +80,13 @@ void DataLoader::loadParticipants(ParticipantList& participantList,
         getline(lineStream, lastNameToken, PIPE_DELIM);
         string lastName = lastNameToken;
 
-        participantList.addParticipant(Participant(participantID, firstName, lastName));
+        participantList.addParticipant(
+            Participant(participantID, firstName, lastName));
     }
 }
 
-void DataLoader::loadRegistration(RegistrationManager& registrationManager,
+void DataLoader::loadRegistration(
+    RegistrationManager& registrationManager,
     const string& filename)
 {
     ifstream inFile(filename);
@@ -94,14 +96,23 @@ void DataLoader::loadRegistration(RegistrationManager& registrationManager,
     {
         istringstream lineStream(rawLine);
 
-        string participantIDToken;
-        getline(lineStream, participantIDToken, PIPE_DELIM);
-        int participantID = stoi(participantIDToken);
-
         string workshopNumberToken;
-        getline(lineStream, workshopNumberToken, PIPE_DELIM);
+        if (!getline(lineStream, workshopNumberToken, PIPE_DELIM))
+            continue;
+
         int workshopNumber = stoi(workshopNumberToken);
 
-        registrationManager.registerParticipant(participantID, workshopNumber);
+        registrationManager.addOpenWorkshop(workshopNumber);
+
+        string participantIDToken;
+        while (getline(lineStream, participantIDToken, PIPE_DELIM))
+        {
+            if (participantIDToken.empty())
+                continue;
+
+            int participantID = stoi(participantIDToken);
+
+            registrationManager.registerParticipant(workshopNumber, participantID);
+        }
     }
 }
