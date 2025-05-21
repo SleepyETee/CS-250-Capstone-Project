@@ -12,59 +12,48 @@
 */
 
 #include "Formatter.h"
-#include "Workshop.h"
-#include "Participant.h"
-#include "RegistrationManager.h"
-#include "WorkshopList.h"
-#include "ParticipantList.h"
+
 
 #include <iostream>
-#include <iomanip>
-#include <limits>
 #include <string>
 #include <vector>
+#include <set>
+#include <iomanip>
 
 using namespace std;
 
-namespace
-{
-    constexpr char STAR_LINE[] = 
-        "*********************************************\n";
-    constexpr char MENU_INDENT[] = "\t";
-    constexpr int  PRICE_WIDTH = 6;
-}
-
 void Formatter::displayMenu()
 {
-    cout << STAR_LINE;
-    cout << MENU_INDENT << MENU_INDENT << "WORKSHOP HUB\n";
-    cout << STAR_LINE;
-    cout << MENU_INDENT << "1. View all workshops\n";
-    cout << MENU_INDENT << "2. View open workshops\n";
-    cout << MENU_INDENT << "3. View workshops by price\n";
-    cout << MENU_INDENT << "4. Register for a workshop\n";
-    cout << MENU_INDENT << "5. List all your workshops\n";
-    cout << MENU_INDENT << "6. Cancel registration\n";
-    cout << MENU_INDENT << "7. Exit\n";
+    cout << "*********************************************\n";
+    cout << "\t\tWORKSHOP HUB\n";
+    cout << "*********************************************\n";
+    cout << "\t1. View all workshops\n";
+    cout << "\t2. View open workshops\n";
+    cout << "\t3. View workshops by price\n";
+    cout << "\t4. Register for a workshop\n";
+    cout << "\t5. List all your workshops\n";
+    cout << "\t6. Cancel registration\n";
+    cout << "\t7. Exit\n";
 }
 
 void Formatter::printAllWorkshops(const WorkshopList& workshopList)
 {    
-    if (workshopList.isEmpty())
+    const auto& allWorkshops = workshopList.getAllWorkshops();
+    if (allWorkshops.empty())
     {
-        cout << "Workshop list is temporarily unavailable."
+        cerr << "Workshop list is temporarily unavailable."
              << "Please try again later.\n\n";
     }
     else
     {
-        cout << MENU_INDENT << "ALL WORKSHOPS\n";
-        cout << MENU_INDENT << "(Workshop #) Workshop Name\n";
-        cout << MENU_INDENT << "-----------------------------\n";
+        cout << "\tALL WORKSHOPS\n";
+        cout << "\t(Workshop #) Workshop Name\n";
+        cout << "\t-----------------------------\n";
 
         for(const Workshop& workshop : 
-            workshopList.getAllWorkshops())
+            allWorkshops)
         {
-            cout << MENU_INDENT << "(" << workshop.getNumber() 
+            cout << "\t(" << workshop.getNumber() 
                  << ") " << workshop.getTitle() << '\n';
         }
     }
@@ -81,15 +70,15 @@ void Formatter::printOpenWorkshops(const WorkshopList& workshopList,
     }
     else
     {
-        cout << MENU_INDENT << "OPEN WORKSHOPS\n";
-        cout << MENU_INDENT << "(Workshop #) Workshop Name\n";
-        cout << MENU_INDENT << "--------------------------\n";
+        cout << "\tOPEN WORKSHOPS\n";
+        cout << "\t(Workshop #) Workshop Name\n";
+        cout << "\t--------------------------\n";
 
         for(int workshopNo : openSet)
         {
             const Workshop& workshop =
                 workshopList.getWorkshop(workshopNo);
-            cout << MENU_INDENT << "(" << workshop.getNumber()
+            cout << "\t(" << workshop.getNumber()
                 << ") " << workshop.getTitle() << '\n';
         }
     }
@@ -98,23 +87,24 @@ void Formatter::printOpenWorkshops(const WorkshopList& workshopList,
 void Formatter::printWorkshopsByPrice(
     const WorkshopList& workshopList, double price)
 {
-    if (workshopList.isEmpty())
+    const auto& allWorkshops = workshopList.getAllWorkshops();
+    if (allWorkshops.empty())
     {
-        cout << "Workshop list is temporarily unavailable."
+        cerr << "Workshop list is temporarily unavailable."
              << "Please try again later.\n\n";
     }
     else
     {
-        cout << "\n" << MENU_INDENT << "WORKSHOPS BY PRICE\n";
-        cout << MENU_INDENT << "(Workshop #) $Price Workshop Name\n";
-        cout << MENU_INDENT << "---------------------------------\n";
+        cout << "\n\tWORKSHOPS BY PRICE\n";
+        cout << "\t(Workshop #) $Price Workshop Name\n";
+        cout << "\t---------------------------------\n";
 
         for(const Workshop& workshop :
-            workshopList.getAllWorkshops())
+            allWorkshops)
         {
             if (workshop.getPrice() <= price)
             {
-                cout << MENU_INDENT << "$" << fixed 
+                cout << "\t$" << fixed 
                     << setprecision(2) << workshop.getPrice()
                     << " (" << workshop.getNumber()
                     << ") " << workshop.getTitle() << '\n';
@@ -136,13 +126,13 @@ void Formatter::printParticipantWorkshops(
     }
     else
     {
-        cout << MENU_INDENT << "YOUR WORKSHOPS\n";
-        cout << MENU_INDENT << "(Workshop #) Workshop Name\n";
-        cout << MENU_INDENT << "--------------------------\n";
+        cout << "\tYOUR WORKSHOPS\n";
+        cout << "\t(Workshop #) Workshop Name\n";
+        cout << "\t--------------------------\n";
 
         for (const Workshop& workshop : workshops)
         {
-            cout << MENU_INDENT << "(" << workshop.getNumber()
+            cout << "\t(" << workshop.getNumber()
                 << ") " << workshop.getTitle() << '\n';
         }
     }
@@ -150,10 +140,10 @@ void Formatter::printParticipantWorkshops(
 
 void Formatter::printWorkshop(const Workshop& workshop)
 {
-    cout << MENU_INDENT << workshop.getTitle() << '\n'
-        << MENU_INDENT << "Number: " << workshop.getNumber() << '\n'
-        << MENU_INDENT << "Hours: " << workshop.getHours() << '\n'
-        << MENU_INDENT << "Price: $" << fixed << setprecision(2)
+    cout << "\t" << workshop.getTitle() << '\n'
+        << "\tNumber: " << workshop.getNumber() << '\n'
+        << "\tHours: " << workshop.getHours() << '\n'
+        << "\tPrice: $" << fixed << setprecision(2)
         << workshop.getPrice() << '\n';
 }
 

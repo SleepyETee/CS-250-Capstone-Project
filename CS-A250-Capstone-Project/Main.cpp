@@ -11,17 +11,14 @@
     Workshop Hub
 */
 
-#include "ParticipantList.h"
-#include "Participant.h"
-#include "Workshop.h"
 #include "WorkshopList.h"
-#include "DataLoader.h"
+#include "ParticipantList.h"
 #include "RegistrationManager.h"
-#include "Formatter.h"
+#include "DataLoader.h"
 #include "Interface.h"
+#include "Formatter.h"
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 

@@ -12,7 +12,6 @@
 */
 
 #include "DataLoader.h"
-#include "WorkshopList.h"
 
 #include <fstream>
 #include <sstream>
@@ -74,14 +73,12 @@ void DataLoader::loadParticipants(ParticipantList& participantList,
 
         string firstNameToken;
         getline(lineStream, firstNameToken, PIPE_DELIM);
-        string firstName = firstNameToken;
 
         string lastNameToken;
         getline(lineStream, lastNameToken, PIPE_DELIM);
-        string lastName = lastNameToken;
 
         participantList.addParticipant(
-            Participant(participantID, firstName, lastName));
+            Participant(participantID, firstNameToken, lastNameToken));
     }
 }
 
@@ -101,7 +98,6 @@ void DataLoader::loadRegistration(
             continue;
 
         int workshopNumber = stoi(workshopNumberToken);
-
         registrationManager.addOpenWorkshop(workshopNumber);
 
         string participantIDToken;
@@ -111,7 +107,6 @@ void DataLoader::loadRegistration(
                 continue;
 
             int participantID = stoi(participantIDToken);
-
             registrationManager.registerParticipant(workshopNumber, participantID);
         }
     }
