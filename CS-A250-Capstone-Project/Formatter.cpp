@@ -41,8 +41,8 @@ void Formatter::printAllWorkshops(const WorkshopList& workshopList)
     const auto& allWorkshops = workshopList.getAllWorkshops();
     if (allWorkshops.empty())
     {
-        cerr << "Workshop list is temporarily unavailable."
-             << "Please try again later.\n\n";
+        cerr << "Workshop list is temporarily unavailable. "
+             << "Please try again later.\n";
     }
     else
     {
@@ -66,7 +66,7 @@ void Formatter::printOpenWorkshops(const WorkshopList& workshopList,
 
     if (openSet.empty())
     {
-        cerr << "There are no open workshops.\n\n";
+        cerr << "There are no open workshops.\n";
     }
     else
     {
@@ -90,8 +90,8 @@ void Formatter::printWorkshopsByPrice(
     const auto& allWorkshops = workshopList.getAllWorkshops();
     if (allWorkshops.empty())
     {
-        cerr << "Workshop list is temporarily unavailable."
-             << "Please try again later.\n\n";
+        cerr << "Workshop list is temporarily unavailable. "
+             << "Please try again later.\n";
     }
     else
     {
@@ -149,7 +149,8 @@ void Formatter::printWorkshop(const Workshop& workshop)
 
 void Formatter::pauseAndWait()
 {
-    cout << "\nPress 'Enter' to return to the menu...\n";
+    cout << "\nPress 'Enter' to return to the menu...";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
+    cout << endl;
 }

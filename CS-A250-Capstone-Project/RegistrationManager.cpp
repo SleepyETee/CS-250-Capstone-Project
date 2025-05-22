@@ -17,12 +17,6 @@
 
 using namespace std;
 
-RegistrationManager::RegistrationManager(
-    const WorkshopList& workshopList,
-    ParticipantList& participantList)
-    : workshopList(workshopList),
-    participantList(participantList) {}
-
 void RegistrationManager::addOpenWorkshop(int workshopNo)
 {
     openWorkshops.insert(workshopNo);

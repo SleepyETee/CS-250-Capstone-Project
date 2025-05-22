@@ -13,6 +13,7 @@
 
 #ifndef PARTICIPANT_H
 #define PARTICIPANT_H
+
 #include <string>
 
 class Participant

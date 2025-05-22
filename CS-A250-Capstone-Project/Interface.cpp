@@ -57,7 +57,7 @@ void processMenu(WorkshopList& workshopList,
                     registration);
                 break;
             case 7:
-                cout << "Thank you for visiting!" << endl;
+                cout << "Thank you for visiting!";
                 break;
             default:
                 break;
