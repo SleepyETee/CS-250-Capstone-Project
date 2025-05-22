@@ -94,8 +94,7 @@ void DataLoader::loadRegistration(
         istringstream lineStream(rawLine);
 
         string workshopNumberToken;
-        if (!getline(lineStream, workshopNumberToken, PIPE_DELIM))
-            continue;
+        getline(lineStream, workshopNumberToken, PIPE_DELIM);
 
         int workshopNumber = stoi(workshopNumberToken);
         registrationManager.addOpenWorkshop(workshopNumber);
@@ -103,11 +102,11 @@ void DataLoader::loadRegistration(
         string participantIDToken;
         while (getline(lineStream, participantIDToken, PIPE_DELIM))
         {
-            if (participantIDToken.empty())
-                continue;
-
-            int participantID = stoi(participantIDToken);
-            registrationManager.registerParticipant(workshopNumber, participantID);
+            if (!participantIDToken.empty())
+            {
+                int participantID = stoi(participantIDToken);
+                registrationManager.registerParticipant(workshopNumber, participantID);
+            }
         }
     }
 }
