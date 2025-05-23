@@ -31,11 +31,12 @@ public:
     const std::set<Workshop>& getAllWorkshops() const;
 
     bool isEmpty() const;
+
     void clearList();
 
 private:
     std::set<Workshop> workshopList;
-    std::set<Workshop>::const_iterator
+    std::set<Workshop>::iterator
         findByNumber(int workshopNo) const;
 };
 
