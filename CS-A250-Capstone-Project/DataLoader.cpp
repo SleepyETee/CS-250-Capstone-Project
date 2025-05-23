@@ -83,8 +83,7 @@ void DataLoader::loadParticipants(ParticipantList& participantList,
 }
 
 void DataLoader::loadRegistration(
-    RegistrationManager& registrationManager,
-    const string& filename)
+    RegistrationManager& registrationManager, const string& filename)
 {
     ifstream inFile(filename);
     string rawLine;
@@ -105,7 +104,8 @@ void DataLoader::loadRegistration(
             if (!participantIDToken.empty())
             {
                 int participantID = stoi(participantIDToken);
-                registrationManager.registerParticipant(workshopNumber, participantID);
+                registrationManager.registerParticipant(workshopNumber,
+                                                        participantID);
             }
         }
     }

@@ -18,9 +18,8 @@ Tech Wizards
 
 using namespace std;
 
-void processMenu(WorkshopList& workshopList,
-    ParticipantList& participantList,
-    RegistrationManager& registration)
+void processMenu(const WorkshopList& workshopList,
+    ParticipantList& participantList, RegistrationManager& registration)
 {
     int selection;
 
@@ -87,7 +86,7 @@ bool verifyIdentification(const ParticipantList& participantList,
         participantList.getLastName(participantID) == lastName;
 }
 
-void viewAllWorkshops(const WorkshopList &workshopList)
+void viewAllWorkshops(const WorkshopList& workshopList)
 {
     Formatter::printAllWorkshops(workshopList);
 }
@@ -113,21 +112,18 @@ void viewParticipantWorkshops(const ParticipantList& participantList)
     string firstName, lastName;
     getIdentification(id, firstName, lastName);
 
-    if (verifyIdentification(
-        participantList, id, firstName, lastName))
+    if (verifyIdentification(participantList, id, firstName, lastName))
     {
         Formatter::printParticipantWorkshops(participantList, id);
     }
     else
     {
-        cout << "The ID number does not match the name provided."
-             << endl;
+        cout << "The ID number does not match the name provided." << endl;
     }
 }
 
-void registerForWorkshop(WorkshopList& workshopList,
-    ParticipantList& participantList,
-    RegistrationManager& registration)
+void registerForWorkshop(const WorkshopList& workshopList,
+    ParticipantList& participantList, RegistrationManager& registration)
 {
     cout << "\tLet's register you for a workshop!\n\n";
 
@@ -168,9 +164,8 @@ void registerForWorkshop(WorkshopList& workshopList,
     }
 }
 
-void cancelRegistration(WorkshopList& workshopList,
-    ParticipantList& participantList,
-    RegistrationManager& registration)
+void cancelRegistration(const WorkshopList& workshopList,
+    ParticipantList& participantList, RegistrationManager& registration)
 {
     int id;
     string firstName, lastName;
@@ -187,7 +182,7 @@ void cancelRegistration(WorkshopList& workshopList,
 
         registration.unregisterParticipant(selection, id);
 
-        cout << "\nYour registration for the following workshop"
+        cout << "\nYour registration for the following workshop "
              << "has been cancelled:\n\n";
 
         Formatter::printWorkshop(

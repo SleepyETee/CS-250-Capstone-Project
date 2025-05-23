@@ -20,7 +20,7 @@ Tech Wizards
 
 #include <string>
 
-void processMenu(WorkshopList& workshopList,
+void processMenu(const WorkshopList& workshopList,
                  ParticipantList& participantList,
                  RegistrationManager& registration);
 
@@ -39,11 +39,11 @@ void viewOpenWorkshops(const WorkshopList& workshopList,
 void viewWorkshopsByPrice(const WorkshopList& workshopList);
 void viewParticipantWorkshops(const ParticipantList& participantList);
 
-void registerForWorkshop(WorkshopList& workshopList,
+void registerForWorkshop(const WorkshopList& workshopList,
                         ParticipantList& participantList,
                         RegistrationManager& registration);
 
-void cancelRegistration(WorkshopList& workshopList,
+void cancelRegistration(const WorkshopList& workshopList,
                     ParticipantList& participantList,
                     RegistrationManager& registration);
 

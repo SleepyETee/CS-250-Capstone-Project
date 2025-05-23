@@ -14,8 +14,8 @@
 #ifndef PARTICIPANTLIST_H
 #define PARTICIPANTLIST_H
 
-#include "Workshop.h"
 #include "Participant.h"
+#include "Workshop.h"
 
 #include <string>
 #include <map>

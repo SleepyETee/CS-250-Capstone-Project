@@ -13,7 +13,6 @@
 
 #include "Formatter.h"
 
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,21 +23,22 @@ using namespace std;
 
 void Formatter::displayMenu()
 {
-    cout << "*********************************************\n";
-    cout << "\t\tWORKSHOP HUB\n";
-    cout << "*********************************************\n";
-    cout << "\t1. View all workshops\n";
-    cout << "\t2. View open workshops\n";
-    cout << "\t3. View workshops by price\n";
-    cout << "\t4. Register for a workshop\n";
-    cout << "\t5. List all your workshops\n";
-    cout << "\t6. Cancel registration\n";
-    cout << "\t7. Exit\n";
+    cout << "*********************************************\n"
+         << "\t\tWORKSHOP HUB\n"
+         << "*********************************************\n"
+         << "\t1. View all workshops\n"
+         << "\t2. View open workshops\n"
+         << "\t3. View workshops by price\n"
+         << "\t4. Register for a workshop\n"
+         << "\t5. List all your workshops\n"
+         << "\t6. Cancel registration\n"
+         << "\t7. Exit\n";
 }
 
 void Formatter::printAllWorkshops(const WorkshopList& workshopList)
 {    
-    const auto& allWorkshops = workshopList.getAllWorkshops();
+    const set<Workshop>& allWorkshops = workshopList.getAllWorkshops();
+
     if (allWorkshops.empty())
     {
         cerr << "Workshop list is temporarily unavailable. "
@@ -46,12 +46,11 @@ void Formatter::printAllWorkshops(const WorkshopList& workshopList)
     }
     else
     {
-        cout << "\tALL WORKSHOPS\n";
-        cout << "\t(Workshop #) Workshop Name\n";
-        cout << "\t-----------------------------\n";
+        cout << "\tALL WORKSHOPS\n"
+             << "\t(Workshop #) Workshop Name\n"
+             << "\t-----------------------------\n";
 
-        for(const Workshop& workshop : 
-            allWorkshops)
+        for(const Workshop& workshop : allWorkshops)
         {
             cout << "\t(" << workshop.getNumber() 
                  << ") " << workshop.getTitle() << '\n';
@@ -70,9 +69,9 @@ void Formatter::printOpenWorkshops(const WorkshopList& workshopList,
     }
     else
     {
-        cout << "\tOPEN WORKSHOPS\n";
-        cout << "\t(Workshop #) Workshop Name\n";
-        cout << "\t--------------------------\n";
+        cout << "\tOPEN WORKSHOPS\n"
+             << "\t(Workshop #) Workshop Name\n"
+             << "\t--------------------------\n";
 
         for(int workshopNo : openSet)
         {
@@ -87,7 +86,8 @@ void Formatter::printOpenWorkshops(const WorkshopList& workshopList,
 void Formatter::printWorkshopsByPrice(
     const WorkshopList& workshopList, double price)
 {
-    const auto& allWorkshops = workshopList.getAllWorkshops();
+    const set<Workshop>& allWorkshops = workshopList.getAllWorkshops();
+
     if (allWorkshops.empty())
     {
         cerr << "Workshop list is temporarily unavailable. "
@@ -95,12 +95,11 @@ void Formatter::printWorkshopsByPrice(
     }
     else
     {
-        cout << "\n\tWORKSHOPS BY PRICE\n";
-        cout << "\t(Workshop #) $Price Workshop Name\n";
-        cout << "\t---------------------------------\n";
+        cout << "\n\tWORKSHOPS BY PRICE\n"
+             << "\t(Workshop #) $Price Workshop Name\n"
+             << "\t---------------------------------\n";
 
-        for(const Workshop& workshop :
-            allWorkshops)
+        for(const Workshop& workshop : allWorkshops)
         {
             if (workshop.getPrice() <= price)
             {
@@ -126,9 +125,9 @@ void Formatter::printParticipantWorkshops(
     }
     else
     {
-        cout << "\tYOUR WORKSHOPS\n";
-        cout << "\t(Workshop #) Workshop Name\n";
-        cout << "\t--------------------------\n";
+        cout << "\tYOUR WORKSHOPS\n"
+             << "\t(Workshop #) Workshop Name\n"
+             << "\t--------------------------\n";
 
         for (const Workshop& workshop : workshops)
         {

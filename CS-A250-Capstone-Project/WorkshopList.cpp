@@ -67,8 +67,7 @@ void WorkshopList::clearList()
     workshopList.clear();
 }
 
-set<Workshop>::iterator
-WorkshopList::findByNumber(int workshopNo) const
+set<Workshop>::iterator WorkshopList::findByNumber(int workshopNo) const
 {
     return find_if(workshopList.begin(), workshopList.end(),
                     [workshopNo](const Workshop& current)

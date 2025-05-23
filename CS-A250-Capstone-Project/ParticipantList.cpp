@@ -19,8 +19,7 @@ using namespace std;
 
 void ParticipantList::addParticipant(const Participant& participant)
 {
-	participantList.insert(
-		make_pair(participant, vector<Workshop>()));
+	participantList.insert(make_pair(participant, vector<Workshop>()));
 }
 
 void ParticipantList::addWorkshopToParticipant(
@@ -50,14 +49,12 @@ ParticipantList::getParticipant(int participantID) const
 	return findByID(participantID)->first;
 }
 
-vector<Workshop>
-ParticipantList::getWorkshops(int participantID) const
+vector<Workshop> ParticipantList::getWorkshops(int participantID) const
 {
 	return findByID(participantID)->second;
 }
 
-void 
-ParticipantList::cancelWorkshop(int participantID, int workshopNo)
+void ParticipantList::cancelWorkshop(int participantID, int workshopNo)
 {
 	auto iterMap = find_if(participantList.begin(),
 		participantList.end(),

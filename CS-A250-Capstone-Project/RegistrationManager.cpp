@@ -13,8 +13,6 @@
 
 #include "RegistrationManager.h"
 
-#include <algorithm>
-
 using namespace std;
 
 void RegistrationManager::addOpenWorkshop(int workshopNo)
