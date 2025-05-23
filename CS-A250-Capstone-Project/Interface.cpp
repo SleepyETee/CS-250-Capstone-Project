@@ -13,10 +13,8 @@ Tech Wizards
 
 #include "Interface.h"
 #include "Formatter.h"
-#include "ParticipantList.h"
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -83,11 +81,9 @@ void getIdentification(int &participantID, string& firstName,
 }
 
 bool verifyIdentification(const ParticipantList& participantList,
-    int participantID, const string& firstName, 
-    const string& lastName)
+    int participantID, const string& firstName, const string& lastName)
 {
-    return participantList.getFirstName(participantID) == 
-        firstName &&
+    return participantList.getFirstName(participantID) == firstName &&
         participantList.getLastName(participantID) == lastName;
 }
 

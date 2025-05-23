@@ -18,6 +18,8 @@ Tech Wizards
 #include "ParticipantList.h"
 #include "RegistrationManager.h"
 
+#include <string>
+
 void processMenu(WorkshopList& workshopList,
                  ParticipantList& participantList,
                  RegistrationManager& registration);
@@ -32,14 +34,10 @@ bool verifyIdentification(const ParticipantList& participantList,
                           const std::string& lastName);
 
 void viewAllWorkshops(const WorkshopList& workshopList);
-
 void viewOpenWorkshops(const WorkshopList& workshopList,
                        const RegistrationManager& registration);
-
 void viewWorkshopsByPrice(const WorkshopList& workshopList);
-
-void viewParticipantWorkshops(
-    const ParticipantList& participantList);
+void viewParticipantWorkshops(const ParticipantList& participantList);
 
 void registerForWorkshop(WorkshopList& workshopList,
                         ParticipantList& participantList,
