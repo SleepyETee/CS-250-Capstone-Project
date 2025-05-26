@@ -67,7 +67,7 @@ bool RegistrationManager::isOpen(int workshopNo) const
     return (openWorkshops.find(workshopNo) != openWorkshops.end());
 }
 
-const std::set<int>& RegistrationManager::getOpenWorkshops() const
+const set<int>& RegistrationManager::getOpenWorkshops() const
 {
     return openWorkshops;
 }
