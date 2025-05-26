@@ -21,7 +21,7 @@ using namespace std;
 void processMenu(const WorkshopList& workshopList,
     ParticipantList& participantList, RegistrationManager& registration)
 {
-    int selection;
+    int selection = 0;
 
     do
     {
@@ -100,7 +100,7 @@ void viewOpenWorkshops(const WorkshopList& workshopList,
 void viewWorkshopsByPrice(const WorkshopList& workshopList)
 {
     cout << "Enter max price: $";
-    double maxPrice;
+    double maxPrice = 0.0;
     cin >> maxPrice;
 
     Formatter::printWorkshopsByPrice(workshopList, maxPrice);
@@ -108,7 +108,7 @@ void viewWorkshopsByPrice(const WorkshopList& workshopList)
 
 void viewParticipantWorkshops(const ParticipantList& participantList)
 {
-    int id;
+    int id = 0;
     string firstName, lastName;
     getIdentification(id, firstName, lastName);
 
@@ -131,14 +131,14 @@ void registerForWorkshop(const WorkshopList& workshopList,
 
     cout << "\nEnter the workshop number or '0' to cancel: ";
 
-    int selection;
+    int selection = 0;
     cin >> selection;
 
     if (selection != 0)
     {
         cout << endl;
 
-        int id;
+        int id = 0;
         string firstName, lastName;
         getIdentification(id, firstName, lastName);
 
@@ -167,7 +167,7 @@ void registerForWorkshop(const WorkshopList& workshopList,
 void cancelRegistration(const WorkshopList& workshopList,
     ParticipantList& participantList, RegistrationManager& registration)
 {
-    int id;
+    int id = 0;
     string firstName, lastName;
     getIdentification(id, firstName, lastName);
 
@@ -177,7 +177,7 @@ void cancelRegistration(const WorkshopList& workshopList,
         Formatter::printParticipantWorkshops(participantList, id);
         cout << "\nWhich workshop number would you like to cancel? ";
 
-        int selection;
+        int selection = 0;
         cin >> selection;
 
         registration.unregisterParticipant(selection, id);
