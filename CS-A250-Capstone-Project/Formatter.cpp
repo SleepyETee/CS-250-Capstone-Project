@@ -120,7 +120,7 @@ void Formatter::printParticipantWorkshops(
 
     if (workshops.empty())
     {
-        cerr << "You are not currently registered for "
+        cout << "You are not currently registered for "
              << "any workshops.\n";
     }
     else
