@@ -188,7 +188,7 @@ void cancelRegistration(const WorkshopList& workshopList,
         Formatter::printWorkshop(
             workshopList.getWorkshop(selection));
 
-        cout << "\nA confirmation email with payment details "
+        cout << "\nA confirmation email with refund details "
              << "has been sent to you." << endl;
     }
     else
